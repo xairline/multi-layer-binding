@@ -25,6 +25,7 @@ jobs:
           rm -rf .github
           rm -rf .vscode
           rm -rf scripts
+          rm -rf *.sh
       
       # covert markdown file to pdf
     #   - name: Install Pandoc
