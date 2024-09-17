@@ -10,6 +10,7 @@ if not SUPPORTS_FLOATING_WINDOWS then
 end
 
 function layer_change(param)
+    multi_layer_binding_ideal_x = -10
     if param == "down" then
         if MULTI_LAYER_BINDING_ACTIVE_LAYER == 1 then
             MULTI_LAYER_BINDING_ACTIVE_LAYER = MULTI_LAYER_BINDING_NUM_OF_LAYERS
