@@ -1,0 +1,16 @@
+layer,button,command
+View,view 1,sim/view/quick_look_1
+View,view 2,sim/view/quick_look_2
+View,view 3,sim/view/quick_look_3
+View,view 4,sim/view/quick_look_4
+View,view 5,sim/view/quick_look_5
+View,view 6,sim/view/quick_look_6
+View,view 7,sim/view/quick_look_8
+Fuel,L AFT,laminar/B738/toggle_switch/fuel_pump_lft1
+Fuel,L FWD,laminar/B738/toggle_switch/fuel_pump_lft2
+Fuel,R FWD,laminar/B738/toggle_switch/fuel_pump_rgt2
+Fuel,R AFT,laminar/B738/toggle_switch/fuel_pump_rgt1
+Fuel,L CTR,laminar/B738/toggle_switch/fuel_pump_ctr1
+Fuel,R CTR,laminar/B738/toggle_switch/fuel_pump_ctr2
+Fuel,CRS Feed,laminar/B738/fuel/cross_feed_valve:1?laminar/B738/toggle_switch/crossfeed_valve_on:laminar/B738/toggle_switch/crossfeed_valve_off
+Elec,btn 1,NO_IMPLEMENT
