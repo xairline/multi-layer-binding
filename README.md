@@ -22,3 +22,10 @@ There is a csv file for zibo 737 provided as an example:
 
 you can define as many layers as you want and each layer can have up to 7 btns. The command is what xplane will do when you click on that btn when you are on that layer.
 
+There is an advanced btn definition for CRS Feed:
+```
+laminar/B738/fuel/cross_feed_valve:1?laminar/B738/toggle_switch/crossfeed_valve_on:laminar/B738/toggle_switch/crossfeed_valve_off
+```
+This means when `laminar/B738/fuel/cross_feed_valve` is **lese than** 1, click that btn will trigger `laminar/B738/toggle_switch/crossfeed_valve_on` otherwise it will trigger `laminar/B738/toggle_switch/crossfeed_valve_off`. This is to let a btn change it's behaviour based on a dataref. 
+
+This is needed cause when you switch layers, a btn might not be in the "on" position so we need to use dataref to know what should be on/off. In other cases, a simple cmd is provided because that cmd is "toggle". For the CRS Feed, there is no toggle cmd but on and off so we have to determine the current state to simulate "toggle"
