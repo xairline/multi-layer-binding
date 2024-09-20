@@ -2,7 +2,7 @@ MULTI_LAYER_BINDING_VERSION = "0.1.0"
 MULTI_LAYER_BINDING_LOGGER = dofile(SCRIPT_DIRECTORY .. "/multi-layer-binding/logger.lua")
 dofile(SCRIPT_DIRECTORY .. "/multi-layer-binding/GUI.lua")
 MULTI_LAYER_BINDING_HELPER = dofile(SCRIPT_DIRECTORY .. "/multi-layer-binding/helper.lua")
-
+local last_show = -1
 if not SUPPORTS_FLOATING_WINDOWS then
     -- to make sure the script doesn't stop with old FlyWithLua versions
     logMsg("imgui not supported by your FlyWithLua version")
@@ -11,6 +11,7 @@ end
 
 function layer_change(param)
     multi_layer_binding_ideal_x = -10
+    last_show = os.clock()
     if param == "down" then
         if MULTI_LAYER_BINDING_ACTIVE_LAYER == 1 then
             MULTI_LAYER_BINDING_ACTIVE_LAYER = MULTI_LAYER_BINDING_NUM_OF_LAYERS
@@ -81,6 +82,10 @@ end
 
 MULTI_LAYER_BINDING_RAW_LAYERS = MULTI_LAYER_BINDING_HELPER.parseCSV(SCRIPT_DIRECTORY ..
     'multi-layer-binding/profiles/' .. PLANE_ICAO .. '.csv')
+if not MULTI_LAYER_BINDING_RAW_LAYERS then
+    MULTI_LAYER_BINDING_LOGGER.write_log('No profile found for ' .. PLANE_ICAO)
+    return
+end
 MULTI_LAYER_BINDING_LOGGER.dumpTable(MULTI_LAYER_BINDING_RAW_LAYERS, 2)
 MULTI_LAYER_BINDING_LAYERS = {}
 for key in pairs(MULTI_LAYER_BINDING_RAW_LAYERS) do
@@ -155,11 +160,20 @@ function multi_layer_binding_on_build(multi_layer_binding_wnd, x, y)
     if multi_layer_binding_wnd_pox_x < -280 then
         if imgui.Button(">", 20, multi_layer_binding_float_wnd_height - 20) then
             multi_layer_binding_ideal_x = -10
+            last_show = os.clock()
         end
     end
 
     imgui.PopStyleColor()
     imgui.PopStyleColor()
+
+    if multi_layer_binding_ideal_x == -10 then
+        -- Hide the window after 10 seconds
+        if os.clock() - last_show > 10 then
+            multi_layer_binding_ideal_x = multi_layer_binding_drawer_pox_x - 10
+            last_show = -1
+        end
+    end
 
     drawer_speed = SCREEN_WIDTH / 50
     if multi_layer_binding_ideal_x ~= multi_layer_binding_wnd_pox_x then

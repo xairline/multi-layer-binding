@@ -53,7 +53,7 @@ function multi_layer_binding_float_wnd_content()
         local btns = MULTI_LAYER_BINDING_RAW_LAYERS[MULTI_LAYER_BINDING_LAYERS[MULTI_LAYER_BINDING_ACTIVE_LAYER]]
         local num_of_btns = #btns
         local num_of_max_btns = 7
-        local btn_width = (multi_layer_binding_float_wnd_width - 5) / num_of_max_btns - 10
+        local btn_width = (multi_layer_binding_float_wnd_width - 5) / num_of_max_btns - 12
 
         for i = 1, num_of_btns do
             if i ~= 1 then
