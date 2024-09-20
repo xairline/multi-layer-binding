@@ -4,7 +4,7 @@
 Move all files under flywithlua's Script folder
 
 ### 1.1 Binding Layer Switch Keys
-In your xplane's joystick configuration, bind layer up/down btn to anything you like. I used trim wheel and trim B (on alpha)
+In your xplane's joystick configuration, bind layer up/down btn to anything you like. I used trim wheel and trim B (on alpha). You can find the btn by searching "multi layer"
 
 
 ![image](https://github.com/user-attachments/assets/97618897-ecf1-42c9-b012-5c964cfef9a7)
@@ -12,7 +12,7 @@ In your xplane's joystick configuration, bind layer up/down btn to anything you 
 
 ### 1.2 Binding Bravo Keys
 
-Similar to above, you need to bind key 20-33 to these
+Similar to above, you need to bind key 20-33 to these. You can find the btn by searching "multi layer"
 
 
 ![image](https://github.com/user-attachments/assets/58583676-897b-498a-9b1a-efcb4f41447c)
