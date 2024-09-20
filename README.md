@@ -18,3 +18,7 @@ Note:
 ## 2. Add Layers and Btn mapping
 There is a csv file for zibo 737 provided as an example:
 
+![image](https://github.com/user-attachments/assets/e0c46065-b623-4a6f-a508-cf5aff653d74)
+
+you can define as many layers as you want and each layer can have up to 7 btns. The command is what xplane will do when you click on that btn when you are on that layer.
+
