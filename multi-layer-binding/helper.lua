@@ -18,7 +18,7 @@ function MULTI_LAYER_BINDING_HELPER.parseCSV(filePath)
     local data = {}
 
     for line in file:lines() do -- Iterate over each line in the file
-        local values = splitString(line, ",")
+        local values = MULTI_LAYER_BINDING_HELPER.splitString(line, ",")
         -- Ensure that data[values[1]] is initialized as a table
         if not data[values[1]] then
             data[values[1]] = {}
