@@ -1,10 +1,20 @@
 local MULTI_LAYER_BINDING_HELPER = {}
+
+function MULTI_LAYER_BINDING_HELPER.splitString(str, delimiter)
+    MULTI_LAYER_BINDING_LOGGER.write_log("Splitting string: " .. str .. " with delimiter: " .. delimiter)
+    local result = {}
+    for match in (str .. delimiter):gmatch("(.-)" .. delimiter) do
+        table.insert(result, match)
+    end
+    return result
+end
+
 function MULTI_LAYER_BINDING_HELPER.parseCSV(filePath)
     MULTI_LAYER_BINDING_LOGGER.write_log("Parsing CSV file: " .. filePath)
     local file = io.open(filePath, "r") -- Open the file for reading
     if not file then return nil, "File not found" end
 
-    local header = splitString(file:read(), ",") -- Read the header line
+    local header = MULTI_LAYER_BINDING_HELPER.splitString(file:read(), ",") -- Read the header line
     local data = {}
 
     for line in file:lines() do -- Iterate over each line in the file
@@ -21,15 +31,6 @@ function MULTI_LAYER_BINDING_HELPER.parseCSV(filePath)
 
     file:close() -- Always remember to close the file
     return data
-end
-
-function MULTI_LAYER_BINDING_HELPER.splitString(str, delimiter)
-    MULTI_LAYER_BINDING_LOGGER.write_log("Splitting string: " .. str .. " with delimiter: " .. delimiter)
-    local result = {}
-    for match in (str .. delimiter):gmatch("(.-)" .. delimiter) do
-        table.insert(result, match)
-    end
-    return result
 end
 
 return MULTI_LAYER_BINDING_HELPER
